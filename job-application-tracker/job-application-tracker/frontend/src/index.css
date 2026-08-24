@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cfd4e0 transparent;
+  }
+  *::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #cfd4e0;
+    border-radius: 999px;
+  }
+  :focus-visible {
+    outline: 2px solid #e8a33d;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Postmark-style status stamp used on job cards - the signature visual motif */
+  .stamp {
+    @apply relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 font-mono text-[11px] font-medium uppercase tracking-wide;
+    transform: rotate(-6deg);
+  }
+  .stamp::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 1px dashed currentColor;
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
